@@ -16,7 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
 Clone FHIR Server repository using command 
 
 ```
-$ git clone https://github.com/siteadmin/fhir-tools.git
+$ git clone https://github.com/drajer-health/medmorph-kar.git
 ```
 
 ### Postgres Configuration
