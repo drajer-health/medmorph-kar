@@ -21,18 +21,12 @@ $ git clone https://github.com/drajer-health/medmorph-kar.git
 
 ### Postgres Configuration
 
-**Load R4 schema and data**
+**Create the Database**
 
 Create the database by running the below command in command prompt
 
 ```
 $ createdb -h localhost -p 5432 -U postgres r4
-```
-
-R4 database file `fhir-r4-db.backup` is located under root directory. Load schema and sample data using psql command
-
-```
-$ psql -U postgres -d r4 -f fhir-r4-db.backup 
 ```
 
 ### Tomcat Configuration 
