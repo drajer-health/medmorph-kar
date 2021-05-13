@@ -37,15 +37,23 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.hl7.fhir.instance.model.api.IIdType;
+import org.hl7.fhir.r4.model.BackboneElement;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.CanonicalType;
+import org.hl7.fhir.r4.model.CodeableConcept;
+import org.hl7.fhir.r4.model.Coding;
+import org.hl7.fhir.r4.model.DataRequirement;
+import org.hl7.fhir.r4.model.Enumerations.PublicationStatus;
 import org.hl7.fhir.r4.model.IdType;
+import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.MessageHeader;
 import org.hl7.fhir.r4.model.Meta;
 import org.hl7.fhir.r4.model.OperationOutcome;
 import org.hl7.fhir.r4.model.PlanDefinition;
+import org.hl7.fhir.r4.model.PlanDefinition.PlanDefinitionActionComponent;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Bundle.BundleEntryComponent;
+import org.hl7.fhir.r4.model.Bundle.BundleType;
 import org.hl7.fhir.r4.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.r4.model.OperationOutcome.OperationOutcomeIssueComponent;
 import org.sitenv.spring.configuration.AppConfig;
@@ -203,11 +211,50 @@ public class PlanDefinitionResourceProvider implements IResourceProvider {
 	}
 	
 	@Operation(name = "$data-requirements", idempotent = false)
-	public Bundle planDefinitionDataRequirements(HttpServletRequest theServletRequest, RequestDetails theRequestDetails,@IdParam IdType thePatientId) {
-		logger.info("Validating the Bundle");
+	public Library planDefinitionDataRequirements(HttpServletRequest theServletRequest, RequestDetails theRequestDetails,@IdParam IdType thePatientId) {
+		Library library = new Library();
+		String id;
+		try {
+			id = thePatientId.getIdPart();
+		} catch (NumberFormatException e) {
+			throw new ResourceNotFoundException(thePatientId);
+		}
+		DafPlanDefinition dafPlanDefinition = this.service.getPlanDefinitionById(id);
+		PlanDefinition planDefinition = (PlanDefinition) fhirContext.newJsonParser().parseResource(dafPlanDefinition.getData());
 		
-		return new Bundle();
+		// Create Library Resource
+		//Set Status
+		library.setStatus(PublicationStatus.ACTIVE);
 		
+		// Set Library Type
+		CodeableConcept libraryType = new CodeableConcept();
+		List<Coding> codingList = new ArrayList<Coding>();
+		Coding coding = new Coding();
+		coding.setCode("module-definition");
+		codingList.add(coding);
+		libraryType.setCoding(codingList);
+		library.setType(libraryType);
+		
+		//set Data Requirements
+		List<DataRequirement> dataRequirements = getDataRequirements(planDefinition.getAction());
+		
+		library.setDataRequirement(dataRequirements);
+		return library;
+		
+	}
+	
+	public List<DataRequirement> getDataRequirements(List<PlanDefinitionActionComponent> planDefinitionActionsList){
+		List<DataRequirement> dataRequirements =new ArrayList<DataRequirement>();
+		for(PlanDefinitionActionComponent planDAction : planDefinitionActionsList) {
+			if(planDAction.hasAction()) {
+				dataRequirements.addAll(getDataRequirements(planDAction.getAction()));
+			} else {
+				if(planDAction.hasInput()) {
+					dataRequirements.addAll(planDAction.getInput());	
+				}
+			}
+		}
+		return dataRequirements;
 	}
 
 	public String getUUID() {
