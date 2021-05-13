@@ -41,15 +41,6 @@ jdbc.username=postgres
 jdbc.password=postgres
 ```
 
-**Specifying the Context Path in the server.xml**
-
-Open server.xml and add below two lines under `<host>` tag and save the file.
-
-```
-<Context path="/open/r4" docBase="./r4"/>
-<Context path="/secure/r4" docBase="./r4"/>
-```
-
 ### Built Application 
 Run Maven build to build application war file. 
 ```
@@ -62,6 +53,6 @@ This will generate a war file under target/{application-name}.war. Copy this to 
 ## Verification 
 Verify using Postman or equivalent tool by running various FHIR APIs on the R4 server. 
 ```
-For example: http://localhost:<port>/open/r4/fhir/Patient/1
+For example: http://localhost:<port>/r4/fhir/PlanDefinition/[id]
 ```
   
