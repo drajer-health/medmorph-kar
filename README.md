@@ -51,7 +51,7 @@ This will generate a war file under target/{application-name}.war. Copy this to 
 **Start Tomcat service**
 
 ## Verification 
-Verify using Postman or equivalent tool by running various FHIR APIs on the R4 server. 
+Verify using Postman or equivalent tool by running various FHIR APIs on the R4 server. Postman Collection is added to the repository 'Connectathon-May-2021.postman_collection'
 ```
 For example: http://localhost:<port>/r4/fhir/PlanDefinition/[id]
 ```
