@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "4c4588d0-7bdb-4f58-a2c6-e912456ae6ca",
+		"name": "Connectathon-May-2021",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PlanDefinition-Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"resourceType\": \"PlanDefinition\",\r\n        \"id\": \"plandefinition-cancer-example\",\r\n        \"meta\": {\r\n          \"versionId\": \"1\",\r\n          \"lastUpdated\": \"2020-11-29T02:03:28.045+00:00\",\r\n          \"profile\": [\r\n            \"http://hl7.org/fhir/us/medmorph/StructureDefinition/us-ph-plandefinition\"\r\n          ]\r\n        },\r\n        \"text\": {\r\n          \"status\": \"extensions\",\r\n          \"div\": \"<div xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><p><b>Generated Narrative</b></p><p><b>Receiver Endpoint Address</b>: <a href=\\\"Endpoint-example-ph-endpoint.html\\\">Generated Summary: id: pha-endpoint-id; status: active; <span title=\\\"{http://terminology.hl7.org/CodeSystem/endpoint-connection-type hl7-fhir-rest}\\\">HL7 FHIR</span>; name: PHAReceiver; endpointmanager@example.pha.org; period: 2020-11-20 --&gt; (ongoing); <span title=\\\"Codes: {http://hl7.org/fhir/resource-types Bundle}\\\">Bundle</span>; payloadMimeType: application/fhir+xml, payloadMimeType: application/fhir+json; address: http://example.pha.org/fhir</a></p><p><b>Author Signature</b>: </p><p><b style=\\\"color: maroon\\\">Exception generating Narrative: type org.hl7.fhir.r5.model.Signature not handled - should not be here</b></p></div>\"\r\n        },\r\n        \"extension\": [\r\n          {\r\n            \"url\": \"http://hl7.org/fhir/us/medmorph/StructureDefinition/ext-receiverAddress\",\r\n            \"valueReference\": {\r\n              \"reference\": \"http://example-pha/fhir/r4/Endpoint/example-ph-endpoint\"\r\n            }\r\n          },\r\n          {\r\n            \"url\": \"http://hl7.org/fhir/us/medmorph/StructureDefinition/ext-authorSignature\",\r\n            \"valueSignature\": {\r\n              \"type\": [\r\n                {\r\n                  \"system\": \"urn:iso-astm:E1762-95:2013\",\r\n                  \"code\": \"1.2.840.10065.1.12.1.5\",\r\n                  \"display\": \"Verification Signature\"\r\n                }\r\n              ],\r\n              \"when\": \"2020-11-04T08:39:24+10:00\",\r\n              \"who\": {\r\n                \"reference\": \"Organization/example-pha-org\"\r\n              },\r\n              \"targetFormat\": \"application/fhir+xml\",\r\n              \"sigFormat\": \"application/signature+xml\",\r\n              \"data\": \"Li4u\"\r\n            }\r\n          },\r\n          {\r\n            \"url\": \"http://hl7.org/fhir/us/medmorph/StructureDefinition/ext-asyncIndicator\",\r\n            \"valueBoolean\": false\r\n          },\r\n          {\r\n            \"url\": \"http://hl7.org/fhir/us/medmorph/StructureDefinition/ext-expectedResponseTime\",\r\n            \"valueDuration\": {\r\n              \"value\": 30,\r\n              \"system\": \"http://unitsofmeasure.org\",\r\n              \"code\": \"s\"\r\n            }\r\n          }\r\n        ],\r\n        \"url\": \"http://hl7.org/fhir/us/medmorph/StructureDefinition/plandefinition-cancer-example\",\r\n        \"version\": \"1.0\",\r\n        \"name\": \"PlanDefinitionCancerExample\",\r\n        \"title\": \"PlanDefinition Cancer Reporting Example\",\r\n        \"type\": {\r\n          \"coding\": [\r\n            {\r\n              \"system\": \"http://terminology.hl7.org/CodeSystem/plan-definition-type\",\r\n              \"code\": \"workflow-definition\",\r\n              \"display\": \"Workflow Definition\"\r\n            }\r\n          ]\r\n        },\r\n        \"status\": \"draft\",\r\n        \"experimental\": true,\r\n        \"date\": \"2020-11-04T12:32:29.858-05:00\",\r\n        \"publisher\": \"HL7 Public Health Work Group\",\r\n        \"description\": \"This is the Cancer Reporting Knowledge Artifact\",\r\n        \"effectivePeriod\": {\r\n          \"start\": \"2020-11-01\"\r\n        },\r\n        \"relatedArtifact\": [\r\n          {\r\n            \"type\": \"depends-on\",\r\n            \"label\": \"Cancer Trigger Codes\",\r\n            \"resource\": \"http://hl7.org/fhir/us/medmorph/ValueSet/valueset-cancer-trigger-codes-example\"\r\n          }\r\n        ],\r\n        \"action\": [\r\n          {\r\n            \"id\": \"initiate-reporting-workflow\",\r\n            \"description\": \"This action represents the start of a reporting workflow.\",\r\n            \"textEquivalent\": \"Initiate Reporting Workflow\",\r\n            \"code\": [\r\n              {\r\n                \"coding\": [\r\n                  {\r\n                    \"system\": \"http://hl7.org/fhir/us/medmorph/CodeSystem/us-ph-plandefinition-actions\",\r\n                    \"code\": \"initiate-reporting-workflow\"\r\n                  }\r\n                ]\r\n              }\r\n            ],\r\n            \"trigger\": [\r\n              {\r\n                \"id\": \"encounter-close\",\r\n                \"extension\": [\r\n                  {\r\n                    \"url\": \"http://hl7.org/fhir/us/medmorph/StructureDefinition/ext-us-ph-namedEventType\",\r\n                    \"valueCodeableConcept\": {\r\n                      \"coding\": [\r\n                        {\r\n                          \"system\": \"http://hl7.org/fhir/us/medmorph/CodeSystem/us-ph-triggerdefinition-namedevents\",\r\n                          \"code\": \"encounter-close\",\r\n                          \"display\": \"Indicates the close of an encounter\"\r\n                        }\r\n                      ]\r\n                    }\r\n                  }\r\n                ],\r\n                \"type\": \"named-event\",\r\n                \"name\": \"encounter-close\"\r\n              }\r\n            ],\r\n            \"relatedAction\": [\r\n              {\r\n                \"actionId\": \"check-trigger-codes\",\r\n                \"relationship\": \"before-start\",\r\n                \"offsetDuration\": {\r\n                  \"value\": 5,\r\n                  \"system\": \"http://unitsofmeasure.org\",\r\n                  \"code\": \"min\"\r\n                }\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"id\": \"check-trigger-codes\",\r\n            \"description\": \"This action represents the execution of the checking trigger codes in the  workflow.\",\r\n            \"textEquivalent\": \"Check Trigger Codes\",\r\n            \"action\": [\r\n              {\r\n                \"code\": [\r\n                  {\r\n                    \"coding\": [\r\n                      {\r\n                        \"system\": \"http://hl7.org/fhir/us/medmorph/CodeSystem/us-ph-plandefinition-actions\",\r\n                        \"code\": \"check-trigger-codes\"\r\n                      }\r\n                    ]\r\n                  }\r\n                ],\r\n                \"condition\": [\r\n                  {\r\n                    \"kind\": \"applicability\",\r\n                    \"expression\": {\r\n                      \"language\": \"text/fhirpath\",\r\n                      \"expression\": \"%conditions.exists()\"\r\n                    }\r\n                  }\r\n                ],\r\n                \"input\": [\r\n                  {\r\n                    \"id\": \"conditions\",\r\n                    \"type\": \"Condition\",\r\n                    \"codeFilter\": [\r\n                      {\r\n                        \"path\": \"code\",\r\n                        \"valueSet\": \"http://hl7.org/fhir/us/medmorph/ValueSet/valueset-cancer-trigger-codes-example\"\r\n                      }\r\n                    ]\r\n                  }\r\n                ],\r\n                \"relatedAction\": [\r\n                  {\r\n                    \"actionId\": \"create-report\",\r\n                    \"relationship\": \"before-start\"\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"id\": \"create-report\",\r\n            \"description\": \"This action represents the creation of a cancer report.\",\r\n            \"textEquivalent\": \"Create Report\",\r\n            \"code\": [\r\n              {\r\n                \"coding\": [\r\n                  {\r\n                    \"system\": \"http://hl7.org/fhir/us/medmorph/CodeSystem/us-ph-plandefinition-actions\",\r\n                    \"code\": \"create-report\"\r\n                  }\r\n                ]\r\n              }\r\n            ],\r\n            \"input\": [\r\n              {\r\n                    \"type\": \"Patient\",\r\n                    \"profile\": [\r\n                      \r\n                        \"http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient\"\r\n                      \r\n                    ]\r\n              },\r\n              {\r\n                    \"type\": \"Condition\",\r\n                    \"profile\": [\r\n                      \r\n                        \"http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition\"\r\n                      \r\n                    ]\r\n              },\r\n              {\r\n                    \"type\": \"Encounter\",\r\n                    \"profile\": [\r\n                      \r\n                        \"http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter\"\r\n                      \r\n                    ]\r\n              },\r\n              {\r\n                    \"type\": \"MedicationRequest\",\r\n                    \"profile\": [\r\n                      \r\n                        \"http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest\"\r\n                      \r\n                    ]\r\n              },\r\n              {\r\n                    \"type\": \"Observation\",\r\n                    \"profile\": [\r\n                      \r\n                        \"http://hl7.org/fhir/StructureDefinition/vitalsigns\"\r\n                      \r\n                    ]\r\n              }\r\n            ],\r\n            \"output\": [\r\n              {\r\n                    \"type\": \"Bundle\",\r\n                    \"profile\": [\r\n                      \r\n                        \"http://hl7.org/fhir/us/medmorph/StructureDefinition/us-ph-reporting-bundle\"\r\n                      \r\n                    ]\r\n              }\r\n            ],\r\n            \"relatedAction\": [\r\n                  {\r\n                    \"actionId\": \"validate-report\",\r\n                    \"relationship\": \"before-start\"\r\n                  }\r\n                ]\r\n          },\r\n          {\r\n            \"id\": \"validate-report\",\r\n            \"description\": \"This action represents the validation of a cancer report.\",\r\n            \"textEquivalent\": \"Validate Report\",\r\n            \"code\": [\r\n              {\r\n                \"coding\": [\r\n                  {\r\n                    \"system\": \"http://hl7.org/fhir/us/medmorph/CodeSystem/us-ph-plandefinition-actions\",\r\n                    \"code\": \"validate-report\"\r\n                  }\r\n                ]\r\n              }\r\n            ],\r\n            \"input\": [\r\n              {\r\n                    \"type\": \"Bundle\",\r\n                    \"profile\": [\r\n                      \r\n                        \"http://hl7.org/fhir/us/medmorph/StructureDefinition/us-ph-reporting-bundle\"\r\n                      \r\n                    ]\r\n              }\r\n            ],\r\n            \"output\": [\r\n              {\r\n                    \"type\": \"Bundle\",\r\n                    \"profile\": [\r\n                      \r\n                        \"http://hl7.org/fhir/us/medmorph/StructureDefinition/us-ph-reporting-bundle\"\r\n                      \r\n                    ]\r\n              }\r\n            ],\r\n            \"relatedAction\": [\r\n                  {\r\n                    \"actionId\": \"submit-report\",\r\n                    \"relationship\": \"before-start\"\r\n                  }\r\n                ]\r\n          },\r\n          {\r\n            \"id\": \"submit-report\",\r\n            \"description\": \"This action represents the submission of a cancer report.\",\r\n            \"textEquivalent\": \"Submit Report\",\r\n            \"code\": [\r\n              {\r\n                \"coding\": [\r\n                  {\r\n                    \"system\": \"http://hl7.org/fhir/us/medmorph/CodeSystem/us-ph-plandefinition-actions\",\r\n                    \"code\": \"submit-report\"\r\n                  }\r\n                ]\r\n              }\r\n            ],\r\n            \"input\": [\r\n              {\r\n                    \"type\": \"Bundle\",\r\n                    \"profile\": [\r\n                      \r\n                        \"http://hl7.org/fhir/us/medmorph/StructureDefinition/us-ph-reporting-bundle\"\r\n                      \r\n                    ]\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/r4/fhir/PlanDefinition",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"r4",
+						"fhir",
+						"PlanDefinition"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PlanDefinition-Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"resourceType\":\"PlanDefinition\",\"id\":\"c41c7012-eed9-4f53-87ba-e43bd6acb9c5\",\"meta\":{\"versionId\":\"1\",\"lastUpdated\":\"2021-05-13T06:01:27.209+00:00\",\"profile\":[\"http://hl7.org/fhir/us/medmorph/StructureDefinition/us-ph-plandefinition\"]},\"text\":{\"status\":\"extensions\",\"div\":\"<div xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><p><b>Generated Narrative</b></p><p><b>Receiver Endpoint Address</b>: <a href=\\\"Endpoint-example-nchs-endpoint.html\\\">Generated Summary: id: example-nchs-endpoint-id; status: active; <span title=\\\"{http://terminology.hl7.org/CodeSystem/endpoint-connection-type hl7-fhir-rest}\\\">HL7 FHIR</span>; name: PHAReceiver; endpointmanager@example.pha.org; period: 2020-11-20 --&gt; (ongoing); <span title=\\\"Codes: {http://hl7.org/fhir/resource-types Bundle}\\\">Bundle</span>; payloadMimeType: application/fhir+xml, payloadMimeType: application/fhir+json; address: http://example.pha.org/fhir</a></p><p><b>Author Signature</b>: </p><p><b style=\\\"color: maroon\\\">Exception generating Narrative: type org.hl7.fhir.r5.model.Signature not handled - should not be here</b></p></div>\"},\"extension\":[{\"url\":\"http://hl7.org/fhir/us/medmorph/StructureDefinition/ext-receiverAddress\",\"valueReference\":{\"reference\":\"http://nchs/fhir/r4/Endpoint/example-nchs-endpoint\"}},{\"url\":\"http://hl7.org/fhir/us/medmorph/StructureDefinition/ext-authorSignature\",\"valueSignature\":{\"type\":[{\"system\":\"urn:iso-astm:E1762-95:2013\",\"code\":\"1.2.840.10065.1.12.1.5\",\"display\":\"Verification Signature\"}],\"when\":\"2020-11-04T08:39:24+10:00\",\"who\":{\"reference\":\"Organization/example-nchs-org\"},\"targetFormat\":\"application/fhir+xml\",\"sigFormat\":\"application/signature+xml\",\"data\":\"L44u\"}},{\"url\":\"http://hl7.org/fhir/us/medmorph/StructureDefinition/ext-asyncIndicator\",\"valueBoolean\":false},{\"url\":\"http://hl7.org/fhir/us/medmorph/StructureDefinition/ext-expectedResponseTime\",\"valueDuration\":{\"value\":30,\"system\":\"http://unitsofmeasure.org\",\"code\":\"s\"}}],\"url\":\"http://hl7.org/fhir/us/medmorph/StructureDefinition/plandefinition-healthcare-survey-example\",\"version\":\"1.0\",\"name\":\"PlanDefinitionHealthcareSurveyExample\",\"title\":\"PlanDefinition Healthcare Survey Reporting Example\",\"type\":{\"coding\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/plan-definition-type\",\"code\":\"workflow-definition\",\"display\":\"Workflow Definition\"}]},\"status\":\"draft\",\"experimental\":true,\"date\":\"2020-11-04T12:32:29.858-05:00\",\"publisher\":\"HL7 Public Health Work Group\",\"description\":\"This is the Healthcare Survey Reporting Knowledge Artifact\",\"effectivePeriod\":{\"start\":\"2020-11-01\"},\"relatedArtifact\":[{\"type\":\"depends-on\",\"label\":\"Healthcare Survey Registered Participants\",\"resource\":\"http://nchs/fhir/r4/Group/healthcare-survey-participants\"}],\"action\":[{\"id\":\"initiate-reporting-workflow\",\"description\":\"This action represents the start of a reporting workflow.\",\"textEquivalent\":\"Initiate Reporting Workflow\",\"code\":[{\"coding\":[{\"system\":\"http://hl7.org/fhir/us/medmorph/CodeSystem/us-ph-plandefinition-actions\",\"code\":\"initiate-reporting-workflow\"}]}],\"trigger\":[{\"id\":\"encounter-close\",\"extension\":[{\"url\":\"http://hl7.org/fhir/us/medmorph/StructureDefinition/ext-us-ph-namedEventType\",\"valueCodeableConcept\":{\"coding\":[{\"system\":\"http://hl7.org/fhir/us/medmorph/CodeSystem/us-ph-triggerdefinition-namedevents\",\"code\":\"encounter-close\",\"display\":\"Indicates the close of an encounter\"}]}}],\"type\":\"named-event\",\"name\":\"encounter-close\"}],\"relatedAction\":[{\"actionId\":\"check-participant-registration\",\"relationship\":\"before-start\",\"offsetDuration\":{\"value\":5,\"system\":\"http://unitsofmeasure.org\",\"code\":\"min\"}}]},{\"id\":\"check-participant-registration\",\"description\":\"This action represents the execution of the checking participants who are participating in the healthcare survey.\",\"textEquivalent\":\"Check Participant Registration\",\"action\":[{\"code\":[{\"coding\":[{\"system\":\"http://hl7.org/fhir/us/medmorph/CodeSystem/us-ph-plandefinition-actions\",\"code\":\"check-participant-registration\"}]}],\"condition\":[{\"kind\":\"applicability\",\"expression\":{\"language\":\"text/fhirpath\",\"expression\":\"closedEncounter.participant.individual.identifier.where(system = 'http://hl7.org/fhir/sid/us-npi).value.subsetOf(participantGroup.member.entity.identifier.where(system = 'http://hl7.org/fhir/sid/us-npi).value)'\"}}],\"input\":[{\"id\":\"closedEncounter\",\"type\":\"Encounter\",\"profile\":[\"http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter\"]},{\"id\":\"participantGroup\",\"type\":\"Group\",\"profile\":[\"http://hl7.org/fhir/us/medmorph/StructureDefinition/us-ph-survey-practitioner-group\"]}],\"relatedAction\":[{\"actionId\":\"create-report\",\"relationship\":\"before-start\"}]}]},{\"id\":\"create-report\",\"description\":\"This action represents the creation of a Healthcare Survey report.\",\"textEquivalent\":\"Healthcare Survey Report\",\"code\":[{\"coding\":[{\"system\":\"http://hl7.org/fhir/us/medmorph/CodeSystem/us-ph-plandefinition-actions\",\"code\":\"create-report\"}]}],\"input\":[{\"type\":\"Patient\",\"profile\":[\"http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient\"]},{\"type\":\"Condition\",\"profile\":[\"http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition\"]},{\"type\":\"Encounter\",\"profile\":[\"http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter\"]},{\"type\":\"MedicationRequest\",\"profile\":[\"http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest\"]},{\"type\":\"Observation\",\"profile\":[\"http://hl7.org/fhir/StructureDefinition/vitalsigns\"]},{\"type\":\"Observation\",\"profile\":[\"http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab\"]}],\"output\":[{\"type\":\"Bundle\",\"profile\":[\"http://hl7.org/fhir/us/medmorph/StructureDefinition/us-ph-reporting-bundle\"]}],\"relatedAction\":[{\"actionId\":\"validate-report\",\"relationship\":\"before-start\"}]},{\"id\":\"validate-report\",\"description\":\"This action represents the validation of a Healthcare Survey report.\",\"textEquivalent\":\"Validate Report\",\"code\":[{\"coding\":[{\"system\":\"http://hl7.org/fhir/us/medmorph/CodeSystem/us-ph-plandefinition-actions\",\"code\":\"validate-report\"}]}],\"input\":[{\"type\":\"Bundle\",\"profile\":[\"http://hl7.org/fhir/us/medmorph/StructureDefinition/us-ph-reporting-bundle\"]}],\"output\":[{\"type\":\"Bundle\",\"profile\":[\"http://hl7.org/fhir/us/medmorph/StructureDefinition/us-ph-reporting-bundle\"]}],\"relatedAction\":[{\"actionId\":\"submit-report\",\"relationship\":\"before-start\"}]},{\"id\":\"submit-report\",\"description\":\"This action represents the submission of a Healthcare Survey report.\",\"textEquivalent\":\"Submit Report\",\"code\":[{\"coding\":[{\"system\":\"http://hl7.org/fhir/us/medmorph/CodeSystem/us-ph-plandefinition-actions\",\"code\":\"submit-report\"}]}],\"input\":[{\"type\":\"Bundle\",\"profile\":[\"http://hl7.org/fhir/us/medmorph/StructureDefinition/us-ph-reporting-bundle\"]}]}]}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/r4/fhir/PlanDefinition/c41c7012-eed9-4f53-87ba-e43bd6acb9c5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"r4",
+						"fhir",
+						"PlanDefinition",
+						"c41c7012-eed9-4f53-87ba-e43bd6acb9c5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PlanDefinition-GetById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/r4/fhir/PlanDefinition/c41c7012-eed9-4f53-87ba-e43bd6acb9c5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"r4",
+						"fhir",
+						"PlanDefinition",
+						"c41c7012-eed9-4f53-87ba-e43bd6acb9c5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PlanDefinition-SearchByPublisher",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/r4/fhir/PlanDefinition?publisher=HL7 Public Health Work Group",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"r4",
+						"fhir",
+						"PlanDefinition"
+					],
+					"query": [
+						{
+							"key": "publisher",
+							"value": "HL7 Public Health Work Group"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PlanDefinition-SearchByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/r4/fhir/PlanDefinition?name=PlanDefinitionCancerExample",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"r4",
+						"fhir",
+						"PlanDefinition"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "PlanDefinitionCancerExample"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PlanDefinition-SearchByTitle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/r4/fhir/PlanDefinition?title=PlanDefinition Healthcare Survey Reporting Example",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"r4",
+						"fhir",
+						"PlanDefinition"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "PlanDefinition Healthcare Survey Reporting Example"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PlanDefinition-SearchByNameAndVersion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/r4/fhir/PlanDefinition?name=PlanDefinitionHealthcareSurveyExample&version=1.0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"r4",
+						"fhir",
+						"PlanDefinition"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "PlanDefinitionHealthcareSurveyExample"
+						},
+						{
+							"key": "version",
+							"value": "1.0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PlanDefinition-DataRequirements",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/r4/fhir/PlanDefinition/c41c7012-eed9-4f53-87ba-e43bd6acb9c5/$data-requirements",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"r4",
+						"fhir",
+						"PlanDefinition",
+						"c41c7012-eed9-4f53-87ba-e43bd6acb9c5",
+						"$data-requirements"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
